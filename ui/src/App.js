@@ -18,7 +18,7 @@ class App extends Component {
         sepalLength: 4,
         sepalWidth: 2,
         petalLength: 1,
-        petalWidth: 0
+        petalWidth: 0.5
       },
       result: ""
     };
@@ -83,13 +83,13 @@ class App extends Component {
     return (
       <Container>
         <div>
-          <h1 className="title">Iris Plant Classifier</h1>
+          <h1 className="title">Game of Thrones Predictor</h1>
         </div>
         <div className="content">
           <Form>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Sepal Length</Form.Label>
+                <Form.Label>Religion</Form.Label>
                 <Form.Control 
                   as="select"
                   value={formData.sepalLength}
@@ -99,7 +99,7 @@ class App extends Component {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label>Sepal Width</Form.Label>
+                <Form.Label>Occupation</Form.Label>
                 <Form.Control 
                   as="select"
                   value={formData.sepalWidth}
@@ -111,7 +111,7 @@ class App extends Component {
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Petal Length</Form.Label>
+                <Form.Label>Sex</Form.Label>
                 <Form.Control 
                   as="select"
                   value={formData.petalLength}
@@ -121,7 +121,7 @@ class App extends Component {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
-                <Form.Label>Petal Width</Form.Label>
+                <Form.Label>Top Location</Form.Label>
                 <Form.Control 
                   as="select"
                   value={formData.petalWidth}
