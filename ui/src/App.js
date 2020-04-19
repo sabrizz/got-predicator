@@ -64,21 +64,33 @@ class App extends Component {
     const formData = this.state.formData;
     const result = this.state.result;
 
-    var sepalLengths = []
-    for (var i = 4; i <= 7; i = +(i + 0.1).toFixed(1)) {
-      sepalLengths.push(<option key = {i} value = {i}>{i}</option>);
+    var religions = []
+    for (var i = 1; i <= 9; i = +(i + 1).toFixed(1)) {
+      religions.push(<option key = {i} value = {i}>{i}</option>);
     }
-    var sepalWidths = []
-    for (var i = 2; i <= 4; i = +(i + 0.1).toFixed(1)) {
-      sepalWidths.push(<option key = {i} value = {i}>{i}</option>);
+    var occupations = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      occupations.push(<option key = {i} value = {i}>{i}</option>);
     }
-    var petalLengths = []
-    for (var i = 1; i <= 6; i = +(i + 0.1).toFixed(1)){
-      petalLengths.push(<option key = {i} value = {i}>{i}</option>);
+    var socialStatus = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      socialStatus.push(<option key = {i} value = {i}>{i}</option>);
     }
-    var petalWidths = []
-    for (var i = 0.1; i <= 3; i = +(i + 0.1).toFixed(1)) {
-      petalWidths.push(<option key = {i} value = {i}>{i}</option>);
+    var genders = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      genders.push(<option key = {i} value = {i}>{i}</option>);
+    }
+    var locations = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      locations.push(<option key = {i} value = {i}>{i}</option>);
+    }
+    var allegiances = []
+    for (var i = 1; i <= 9; i = +(i + 1).toFixed(1)) {
+      allegiances.push(<option key = {i} value = {i}>{i}</option>);
+    }
+    var continents = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      continents.push(<option key = {i} value = {i}>{i}</option>);
     }
     return (
       <Container>
@@ -92,20 +104,30 @@ class App extends Component {
                 <Form.Label>Religion</Form.Label>
                 <Form.Control 
                   as="select"
-                  value={formData.sepalLength}
-                  name="sepalLength"
+                  value={formData.religion}
+                  name="religion"
                   onChange={this.handleChange}>
-                  {sepalLengths}
+                  {religions}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Label>Occupation</Form.Label>
                 <Form.Control 
                   as="select"
-                  value={formData.sepalWidth}
-                  name="sepalWidth"
+                  value={formData.occupation}
+                  name="occupation"
                   onChange={this.handleChange}>
-                  {sepalWidths}
+                  {occupations}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Social status</Form.Label>
+                <Form.Control 
+                  as="select"
+                  value={formData.socialStatus}
+                  name="socialStatus"
+                  onChange={this.handleChange}>
+                  {socialStatus}
                 </Form.Control>
               </Form.Group>
             </Form.Row>
@@ -114,20 +136,40 @@ class App extends Component {
                 <Form.Label>Sex</Form.Label>
                 <Form.Control 
                   as="select"
-                  value={formData.petalLength}
-                  name="petalLength"
+                  value={formData.gender}
+                  name="gender"
                   onChange={this.handleChange}>
-                  {petalLengths}
+                  {genders}
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col}>
                 <Form.Label>Top Location</Form.Label>
                 <Form.Control 
                   as="select"
-                  value={formData.petalWidth}
-                  name="petalWidth"
+                  value={formData.location}
+                  name="location"
                   onChange={this.handleChange}>
-                  {petalWidths}
+                  {locations}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Allegiance</Form.Label>
+                <Form.Control 
+                  as="select"
+                  value={formData.allegiance}
+                  name="allegiance"
+                  onChange={this.handleChange}>
+                  {allegiances}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Continent</Form.Label>
+                <Form.Control 
+                  as="select"
+                  value={formData.continent}
+                  name="continent"
+                  onChange={this.handleChange}>
+                  {continents}
                 </Form.Control>
               </Form.Group>
             </Form.Row>
