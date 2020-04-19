@@ -14,17 +14,26 @@ app = Api(app = flask_app,
 name_space = app.namespace('prediction', description='Prediction APIs')
 
 model = app.model('Prediction params', 
-				  {'sepalLength': fields.Float(required = True, 
-				  							   description="Sepal Length", 
+				  {'religion': fields.Integer(required = True, 
+				  							   description="religion", 
     					  				 	   help="Sepal Length cannot be blank"),
-				  'sepalWidth': fields.Float(required = True, 
-				  							   description="Sepal Width", 
+				  'occupation': fields.Integer(required = True, 
+				  							   description="occupation", 
     					  				 	   help="Sepal Width cannot be blank"),
-				  'petalLength': fields.Float(required = True, 
-				  							description="Petal Length", 
+				  'socialStatus': fields.Integer(required = True, 
+				  							description="socialStatus", 
     					  				 	help="Petal Length cannot be blank"),
-				  'petalWidth': fields.Float(required = True, 
-				  							description="Petal Width", 
+				  'gender': fields.Integer(required = True, 
+				  							description="gender", 
+    					  				 	help="Petal Width cannot be blank"),
+				  'location': fields.Integer(required = True, 
+				  							description="location", 
+    					  				 	help="Petal Width cannot be blank"),
+				  'allegiance': fields.Integer(required = True, 
+				  							description="allegiance", 
+    					  				 	help="Petal Width cannot be blank"),
+				  'continent': fields.Integer(required = True, 
+				  							description="continent", 
     					  				 	help="Petal Width cannot be blank")})
 
 classifier = joblib.load('classifier.joblib')
@@ -45,7 +54,7 @@ class MainClass(Resource):
 			formData = request.json
 			data = [val for val in formData.values()]
 			prediction = classifier.predict(np.array(data).reshape(1, -1))
-			types = { 0: "Iris Setosa", 1: "Iris Versicolour ", 2: "Iris Virginica"}
+			types = { 0: "Alive", 1: "Dead"}
 			response = jsonify({
 				"statusCode": 200,
 				"status": "Prediction made",
