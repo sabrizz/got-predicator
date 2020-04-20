@@ -15,10 +15,13 @@ class App extends Component {
     this.state = {
       isLoading: false,
       formData: {
-        sepalLength: 4,
-        sepalWidth: 2,
-        petalLength: 1,
-        petalWidth: 0.5
+        gender: 1,
+        religion: 1,
+        occupation: 1,
+        socialStatus: 1,    
+        allegiance: 1,    
+        continent: 1,
+        location: 1
       },
       result: ""
     };
@@ -32,10 +35,12 @@ class App extends Component {
     this.setState({
       formData
     });
+    console.log("formData : " + JSON.stringify(formData));
   }
 
   handlePredictClick = (event) => {
     const formData = this.state.formData;
+    console.log("formData : " + JSON.stringify(formData));
     this.setState({ isLoading: true });
     fetch('http://127.0.0.1:5000/prediction/', 
       {
@@ -52,7 +57,8 @@ class App extends Component {
           result: response.result,
           isLoading: false
         });
-      });
+        console.log("response : " + JSON.stringify(response))
+      })
   }
 
   handleCancelClick = (event) => {
@@ -63,35 +69,54 @@ class App extends Component {
     const isLoading = this.state.isLoading;
     const formData = this.state.formData;
     const result = this.state.result;
+    
+    const religions_values = ['Great Stallion',	'Lord of Light',	'Faith of the Seven',	'Old Gods',	'Drowned God',	'Many Faced God',	'Other', 'Unknown/Unclear'];
+    const occupations_values = ['Soldier', 'Noncombatant','Unknown/Unclear'];
+    const socialStatus_values = ['Highborn', 'Lowborn','Unknown/Unclear'];
+    const gender_values = ['Male',	'Female'];
+    const locations_values = ['Indoors',	'Outdoors', 'Unknown/Unclear'];
+    const allegiance_values = ['Stark',	'Targaryen'	,'Night\'s Watch', 'Lannister',	'Greyjoy',	'Bolton',	'Frey',	'Other',	'Unknown/Unclear'];
+    const continents_values = ['Westeros', 'Essos', 'Unknown/Unclear'];
 
     var religions = []
-    for (var i = 1; i <= 9; i = +(i + 1).toFixed(1)) {
-      religions.push(<option key = {i} value = {i}>{i}</option>);
+    for (var i = 1; i <= 7; i = +(i + 1).toFixed(1)) {
+      religions.push(<option key = {i} value = {i}>{religions_values[i-1]}</option>);
     }
+    religions.push(<option key = {8} value = {9}>{religions_values[7]}</option>);
+
     var occupations = []
     for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      occupations.push(<option key = {i} value = {i}>{i}</option>);
+      occupations.push(<option key = {i} value = {i}>{occupations_values[i-1]}</option>);
     }
+    occupations.push(<option key = {8} value = {9}>{occupations_values[2]}</option>);
+
     var socialStatus = []
     for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      socialStatus.push(<option key = {i} value = {i}>{i}</option>);
+      socialStatus.push(<option key = {i} value = {i}>{socialStatus_values[i-1]}</option>);
     }
+    socialStatus.push(<option key = {8} value = {9}>{socialStatus_values[2]}</option>);
+
     var genders = []
     for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      genders.push(<option key = {i} value = {i}>{i}</option>);
+      genders.push(<option key = {i} value = {i}>{gender_values[i-1]}</option>);
     }
     var locations = []
     for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      locations.push(<option key = {i} value = {i}>{i}</option>);
+      locations.push(<option key = {i} value = {i}>{locations_values[i-1]}</option>);
     }
+    locations.push(<option key = {8} value = {9}>{locations_values[2]}</option>);
+
     var allegiances = []
     for (var i = 1; i <= 9; i = +(i + 1).toFixed(1)) {
-      allegiances.push(<option key = {i} value = {i}>{i}</option>);
+      allegiances.push(<option key = {i} value = {i}>{allegiance_values[i-1]}</option>);
     }
+    
     var continents = []
     for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      continents.push(<option key = {i} value = {i}>{i}</option>);
+      continents.push(<option key = {i} value = {i}>{continents_values[i-1]}</option>);
     }
+    continents.push(<option key = {8} value = {9}>{continents_values[2]}</option>);
+
     return (
       <Container>
         <div>
@@ -100,6 +125,16 @@ class App extends Component {
         <div className="content">
           <Form>
             <Form.Row>
+              <Form.Group as={Col}>
+                <Form.Label>Sex</Form.Label>
+                <Form.Control 
+                  as="select"
+                  value={formData.gender}
+                  name="gender"
+                  onChange={this.handleChange}>
+                  {genders}
+                </Form.Control>
+              </Form.Group>
               <Form.Group as={Col}>
                 <Form.Label>Religion</Form.Label>
                 <Form.Control 
@@ -133,26 +168,6 @@ class App extends Component {
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col}>
-                <Form.Label>Sex</Form.Label>
-                <Form.Control 
-                  as="select"
-                  value={formData.gender}
-                  name="gender"
-                  onChange={this.handleChange}>
-                  {genders}
-                </Form.Control>
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Label>Top Location</Form.Label>
-                <Form.Control 
-                  as="select"
-                  value={formData.location}
-                  name="location"
-                  onChange={this.handleChange}>
-                  {locations}
-                </Form.Control>
-              </Form.Group>
-              <Form.Group as={Col}>
                 <Form.Label>Allegiance</Form.Label>
                 <Form.Control 
                   as="select"
@@ -170,6 +185,16 @@ class App extends Component {
                   name="continent"
                   onChange={this.handleChange}>
                   {continents}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col}>
+                <Form.Label>Preferred Location</Form.Label>
+                <Form.Control 
+                  as="select"
+                  value={formData.location}
+                  name="location"
+                  onChange={this.handleChange}>
+                  {locations}
                 </Form.Control>
               </Form.Group>
             </Form.Row>

@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify, make_response
 from flask_restplus import Api, Resource, fields
+from flask_cors import CORS
 #from sklearn.externals import joblib
 import numpy as np
 import joblib as joblib
 import sys
 
 flask_app = Flask(__name__)
+CORS(flask_app)
 app = Api(app = flask_app, 
 		  version = "1.0", 
 		  title = "Iris Plant identifier", 
@@ -53,12 +55,15 @@ class MainClass(Resource):
 		try: 
 			formData = request.json
 			data = [val for val in formData.values()]
+			print("post")
+			print("date",data)
 			prediction = classifier.predict(np.array(data).reshape(1, -1))
+			print("prediction",prediction)
 			types = { 0: "Alive", 1: "Dead"}
 			response = jsonify({
 				"statusCode": 200,
 				"status": "Prediction made",
-				"result": "The type of iris plant is: " + types[prediction[0]]
+				"result": "Your character is: " + types[prediction[0]]
 				})
 			response.headers.add('Access-Control-Allow-Origin', '*')
 			return response
