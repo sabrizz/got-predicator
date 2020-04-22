@@ -10,7 +10,6 @@ import joblib as joblib
 from sklearn import datasets
 
 # Get the dataset
-#dataset = datasets.load_iris()
 dataset = pd.read_csv('dataset/character_data_S01-S08.csv')
 
 #Data cleaning

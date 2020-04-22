@@ -31,7 +31,7 @@ class App extends Component {
     const value = event.target.value;
     const name = event.target.name;
     var formData = this.state.formData;
-    formData[name] = value;
+    formData[name] = parseInt(value);
     this.setState({
       formData
     });
@@ -70,13 +70,18 @@ class App extends Component {
     const formData = this.state.formData;
     const result = this.state.result;
     
+    const gender_values = ['Male',	'Female'];
     const religions_values = ['Great Stallion',	'Lord of Light',	'Faith of the Seven',	'Old Gods',	'Drowned God',	'Many Faced God',	'Other', 'Unknown/Unclear'];
     const occupations_values = ['Soldier', 'Noncombatant','Unknown/Unclear'];
     const socialStatus_values = ['Highborn', 'Lowborn','Unknown/Unclear'];
-    const gender_values = ['Male',	'Female'];
-    const locations_values = ['Indoors',	'Outdoors', 'Unknown/Unclear'];
     const allegiance_values = ['Stark',	'Targaryen'	,'Night\'s Watch', 'Lannister',	'Greyjoy',	'Bolton',	'Frey',	'Other',	'Unknown/Unclear'];
     const continents_values = ['Westeros', 'Essos', 'Unknown/Unclear'];
+    const locations_values = ['Indoors',	'Outdoors', 'Unknown/Unclear'];
+
+    var genders = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      genders.push(<option key = {i} value = {i}>{gender_values[i-1]}</option>);
+    }
 
     var religions = []
     for (var i = 1; i <= 7; i = +(i + 1).toFixed(1)) {
@@ -96,16 +101,6 @@ class App extends Component {
     }
     socialStatus.push(<option key = {8} value = {9}>{socialStatus_values[2]}</option>);
 
-    var genders = []
-    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      genders.push(<option key = {i} value = {i}>{gender_values[i-1]}</option>);
-    }
-    var locations = []
-    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
-      locations.push(<option key = {i} value = {i}>{locations_values[i-1]}</option>);
-    }
-    locations.push(<option key = {8} value = {9}>{locations_values[2]}</option>);
-
     var allegiances = []
     for (var i = 1; i <= 9; i = +(i + 1).toFixed(1)) {
       allegiances.push(<option key = {i} value = {i}>{allegiance_values[i-1]}</option>);
@@ -116,6 +111,12 @@ class App extends Component {
       continents.push(<option key = {i} value = {i}>{continents_values[i-1]}</option>);
     }
     continents.push(<option key = {8} value = {9}>{continents_values[2]}</option>);
+
+    var locations = []
+    for (var i = 1; i <= 2; i = +(i + 1).toFixed(1)) {
+      locations.push(<option key = {i} value = {i}>{locations_values[i-1]}</option>);
+    }
+    locations.push(<option key = {8} value = {9}>{locations_values[2]}</option>);
 
     return (
       <Container>
