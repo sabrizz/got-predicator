@@ -44,6 +44,8 @@ $ flask run
 ```
 **If you go at http://localhost:5000, you will find the server runnning**
 
+## 🔗 Links
+ - Collaboratory file - https://colab.research.google.com/drive/1bsFwGD44t0V8Ter6OibUNwDg_LjfhVoQ
 ## ✨ Collaborators
 
 Robin Dutertre  
