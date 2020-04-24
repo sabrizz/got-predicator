@@ -11,12 +11,20 @@
 
 ## 📋 The project
 
-
+This project aims to predict if a character defined by some parameters is alive at the end of Game Of Thrones serie.
+In order to do so, we use Machine Learning and a web application (using React frontend and Flask python backend).
 
 
 ## 🚀 Installation instructions
 
-### 1. The application:
+### 1. Before starting the application:
+If the files "classifier.joblib","regressionDthDesc.joblib" and "regressionDthEp.joblib" are not present, you need to train the different models by running the following commands:
+```
+$ python service/model_generator.py
+$ python service/model_reg_generator.py
+```
+
+### 2. The application:
 * You need to run the following commands to deploy the Web Application:
 ```
 $ git clone https://github.com/sabrizz/got-predicator.git
@@ -44,6 +52,8 @@ $ flask run
 ```
 **If you go at http://localhost:5000, you will find the server runnning**
 
+## 🔗 Links
+ - Collaboratory file - https://colab.research.google.com/drive/1bsFwGD44t0V8Ter6OibUNwDg_LjfhVoQ
 ## ✨ Collaborators
 
 Robin Dutertre  
