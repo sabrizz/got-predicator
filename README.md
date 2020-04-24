@@ -54,6 +54,7 @@ $ flask run
 
 ## 🔗 Links
  - Collaboratory file - https://colab.research.google.com/drive/1bsFwGD44t0V8Ter6OibUNwDg_LjfhVoQ
+ - Presentation Video - https://youtu.be/tLSpbbICjkA
 ## ✨ Collaborators
 
 Robin Dutertre  
